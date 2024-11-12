@@ -2,5 +2,5 @@ settings.py
 *.log
 .vscode/
 .idea/
-enb/
+.venv/
 __pycache__/
