@@ -1,4 +1,5 @@
 from glob import glob
+import os
 from random import choice
 from utils import get_smile, play_random_numbers, print_active, get_keyboard
 
@@ -59,3 +60,12 @@ def user_coords(update, context):
         f'Ваши координаты {coords}{smile}',
         reply_markup=get_keyboard()
     )
+
+
+def check_user_photo(update, context):
+    update.message.reply_text('Загружаю фото')
+    os.makedirs('downloads', exist_ok=True)
+    photo_file = context.bot.getFile(update.message.photo[-1].file_id)
+    file_name = os.path.join('downloads', f'{update.message.photo[-1].file_id}.jpg')
+    photo_file.download(file_name)
+    update.message.reply_text('Файл сохранён')

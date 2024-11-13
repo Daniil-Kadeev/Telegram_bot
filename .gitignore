@@ -4,3 +4,4 @@ settings.py
 .idea/
 .venv/
 __pycache__/
+downloads/
